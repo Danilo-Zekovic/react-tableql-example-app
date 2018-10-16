@@ -16,6 +16,18 @@ const GET_ALL_FILMS = gql`
   }
 `
 
+const GET_ALL_PEOPLE = gql`
+  {
+    allPeople{
+      people{
+        name
+        gender
+        eyeColor
+      }
+    }
+  }
+`
+
 class App extends Component {
   constructor(props) {
     super(props)
@@ -36,7 +48,7 @@ class App extends Component {
           <h2>TableQL Demo App</h2>
         </header>
         <TableQL
-          query={GET_ALL_FILMS}
+          query={GET_ALL_PEOPLE}
           tableql=''
           thead=''
           theadtr=''
