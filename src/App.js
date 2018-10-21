@@ -9,8 +9,9 @@ const GET_ALL_FILMS = gql`
   {
     allFilms(first:7){
       films{
-        title
         episodeID
+        title
+        releaseDate
       }
     }
   }
@@ -23,15 +24,13 @@ const GET_ALL_PEOPLE = gql`
         name
         gender
         eyeColor
+        birthYear
       }
     }
   }
 `
 
 class App extends Component {
-  constructor(props) {
-    super(props)
-  }
   render() {
     return (
       <div className="App">
@@ -48,9 +47,10 @@ class App extends Component {
           <h2>TableQL Demo App</h2>
         </header>
         <TableQL
-          query={GET_ALL_PEOPLE}
+          query={GET_ALL_FILMS}
+          debug={false}
           tableql=''
-          thead=''
+          thead='blue-header'
           theadtr=''
           theadth=''
           tbody=''
