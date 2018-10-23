@@ -6,8 +6,8 @@ import './App.css'
 
 // query for testing
 const GET_ALL_FILMS = gql`
-  {
-    allFilms(first:7){
+  query Films($first: Int){
+    allFilms(first:$first){
       films{
         episodeID
         title
@@ -16,6 +16,7 @@ const GET_ALL_FILMS = gql`
     }
   }
 `
+const first = 4
 
 const GET_ALL_PEOPLE = gql`
   {
@@ -30,8 +31,22 @@ const GET_ALL_PEOPLE = gql`
   }
 `
 
+// example how to control the order of the columns
+const COLUMNS_ORDER = ['episodeID', 'releaseDate', 'title']
+
+// more complex example
+const COLUMNS = [
+  {
+    id: 'episodeID',
+    label: 'Episode Identification',
+  },
+  'releaseDate',
+  'title'
+]
+
 class App extends Component {
   render() {
+    console.log(COLUMNS);
     return (
       <div className="App">
         <header className="App-header">
@@ -48,7 +63,12 @@ class App extends Component {
         </header>
         <TableQL
           query={GET_ALL_FILMS}
-          debug={false}
+          variables={{ first }}
+
+          debug={true}
+          // errorMessage='Custome Error!'
+          columns={COLUMNS}
+
           tableql=''
           thead='blue-header'
           theadtr=''
