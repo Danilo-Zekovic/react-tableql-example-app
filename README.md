@@ -1,3 +1,16 @@
+# Example App for react-tableql     
+
+This app serves to test the npm package react-tableql.      
+
+## How to run it    
+1. clone this repo   
+2. `npm install`   
+3. clone SWAPI https://github.com/graphql/swapi-graphql   
+4. run it as instructed  
+5. connect the Apollo client in example app with SWAPI GraphQL endpoint   
+6. run the app `npm start`   
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>

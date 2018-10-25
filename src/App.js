@@ -26,6 +26,11 @@ const GET_ALL_PEOPLE = gql`
         gender
         eyeColor
         birthYear
+        filmConnection {
+          pageInfo{
+            hasNextPage
+          }
+        }
       }
     }
   }
@@ -44,9 +49,16 @@ const COLUMNS = [
   'title'
 ]
 
+const COLUMNS_PEOPLE = [
+  'name', 'gender', 'eyeColor', 'birthYear',
+  {
+    id:'filmConnection.pageInfo.hasNextPage',
+    label:'Has Next Page'
+  }
+]
+
 class App extends Component {
   render() {
-    console.log(COLUMNS);
     return (
       <div className="App">
         <header className="App-header">
@@ -62,12 +74,12 @@ class App extends Component {
           <h2>TableQL Demo App</h2>
         </header>
         <TableQL
-          query={GET_ALL_FILMS}
-          variables={{ first }}
+          query={GET_ALL_PEOPLE}
+          // variables={{ first }}
 
-          debug={true}
+          debug={false}
           // errorMessage='Custome Error!'
-          columns={COLUMNS}
+          columns={COLUMNS_PEOPLE}
 
           tableql=''
           thead='blue-header'
