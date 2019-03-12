@@ -10,7 +10,7 @@ import { ApolloProvider } from 'react-apollo'
 // needed to connect to GraphQl endpoint
 // and for the TableQL to work
 const client = new ApolloClient({
-  uri: "http://localhost:40497"
+  uri: "http://localhost:57097"
 });
 
 // client

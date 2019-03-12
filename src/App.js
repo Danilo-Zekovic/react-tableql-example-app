@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
 import TableQL from 'react-tableql'
-import gql from "graphql-tag"
 import logo from './logo.svg'
 import './App.css'
 
 // query for testing
-const GET_ALL_FILMS = gql`
+const GET_ALL_FILMS = `
   query Films($first: Int){
     allFilms(first:$first){
       films{
@@ -16,9 +15,8 @@ const GET_ALL_FILMS = gql`
     }
   }
 `
-const first = 4
 
-const GET_ALL_PEOPLE = gql`
+const GET_ALL_PEOPLE = `
   {
     allPeople{
       people{
@@ -37,7 +35,7 @@ const GET_ALL_PEOPLE = gql`
 `
 
 // example how to control the order of the columns
-const COLUMNS_ORDER = ['episodeID', 'releaseDate', 'title']
+const COLUMNS_ORDER = ['episodeID', 'title', 'releaseDate' ]
 
 // more complex example
 const COLUMNS = [
@@ -58,6 +56,21 @@ const COLUMNS_PEOPLE = [
 ]
 
 class App extends Component {
+
+  state = {
+    query: ``,
+    input: '',
+    columns: [],
+    first: 3,
+  }
+
+  renderTables = (query, columns = []) => {
+    this.setState({
+      query: query,
+      columns: columns,
+    })
+  }
+
   render() {
     return (
       <div className="App">
@@ -73,13 +86,22 @@ class App extends Component {
           </a>
           <h2>TableQL Demo App</h2>
         </header>
-        <TableQL
-          query={GET_ALL_PEOPLE}
-          // variables={{ first }}
+        <button onClick={ () => {this.renderTables(GET_ALL_PEOPLE, COLUMNS_PEOPLE)} }>Get All People</button>||
+        <button onClick={ () => {this.renderTables(GET_ALL_FILMS, COLUMNS)} }>Get First {this.state.first} Films</button>||
+        <button onClick={ () => {this.renderTables(GET_ALL_FILMS, COLUMNS_ORDER)} }>Get First {this.state.first} Films v2</button>
+        <br/>
+        <label>
+          First Number of Films:
+          <input value={this.state.first} onChange={ (e) => this.setState({ first: e.target.value }) }/>
+        </label>
+
+        { this.state.query && <TableQL
+          query={this.state.query}
+          variables={{ first: this.state.first || 0 }}
 
           debug={false}
           // errorMessage='Custome Error!'
-          columns={COLUMNS_PEOPLE}
+          columns={this.state.columns}
 
           tableql=''
           thead='blue-header'
@@ -88,7 +110,7 @@ class App extends Component {
           tbody=''
           tbodytr=''
           tbodytd=''
-        />
+        />}
       </div>
     );
   }
