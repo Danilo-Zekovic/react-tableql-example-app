@@ -3,11 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "apollo-boost": "^0.1.16",
-    "graphql": "^14.0.2",
-    "react": "^16.5.2",
-    "react-apollo": "^2.2.4",
-    "react-dom": "^16.5.2",
+    "apollo-boost": "^0.1.28",
+    "graphql": "^14.2.1",
+    "react": "^16.8.6",
+    "react-apollo": "^2.5.4",
+    "react-dom": "^16.8.6",
     "react-scripts": "2.1.8"
   },
   "scripts": {

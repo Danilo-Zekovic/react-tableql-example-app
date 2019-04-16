@@ -9,7 +9,7 @@ import { ApolloProvider } from 'react-apollo'
 // needed to connect to GraphQl endpoint
 // and for the TableQL to work
 const client = new ApolloClient({
-  uri: "http://localhost:42836"
+  uri: "http://localhost:51613"
 });
 
 ReactDOM.render(
