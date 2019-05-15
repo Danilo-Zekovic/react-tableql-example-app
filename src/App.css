@@ -10,7 +10,7 @@
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
-  height: 14vmin;
+  height: 10vmin;
 }
 
 .App-header {
@@ -26,6 +26,7 @@
 
 .App-link {
   color: #61dafb;
+  font-size: 0.7em;
 }
 
 @keyframes App-logo-spin {
@@ -35,4 +36,20 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.bg-green {
+  background-color: lightgreen;
+}
+
+.bg-red {
+  border: 2px solid coral;
+}
+
+.bg-yellow {
+  background-color: yellow;
+}
+
+.bg-purple {
+  border: 2px solid purple;
 }

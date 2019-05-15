@@ -5,17 +5,21 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from 'react-apollo'
+import { BrowserRouter } from "react-router-dom";
 
 // needed to connect to GraphQl endpoint
 // and for the TableQL to work
 const client = new ApolloClient({
-  uri: "http://localhost:51613"
+  // uri: "http://localhost:56423" // use this for testing SWAPI local
+  uri: "https://api.graphcms.com/simple/v1/swapi"
 });
 
 ReactDOM.render(
   (
     <ApolloProvider client={client}>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </ApolloProvider>
   ),
   document.getElementById('root')

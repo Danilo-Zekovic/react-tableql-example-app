@@ -1,75 +1,13 @@
 import React, { Component } from 'react'
-import TableQL from 'react-tableql'
 import logo from './logo.svg'
 import './App.css'
+import { Route } from 'react-router-dom'
 
-// query for testing
-const GET_ALL_FILMS = `
-  query Films($first: Int){
-    allFilms(first:$first){
-      films{
-        episodeID
-        title
-        releaseDate
-      }
-    }
-  }
-`
-
-const GET_ALL_PEOPLE = `
-  {
-    allPeople{
-      people{
-        name
-        gender
-        eyeColor
-        birthYear
-        filmConnection {
-          pageInfo{
-            hasNextPage
-          }
-        }
-      }
-    }
-  }
-`
-
-// example how to control the order of the columns
-const COLUMNS_ORDER = ['episodeID', 'title', 'releaseDate' ]
-
-// more complex example
-const COLUMNS = [
-  {
-    id: 'episodeID',
-    label: 'Episode Identification',
-  },
-  'releaseDate',
-  'title'
-]
-
-const COLUMNS_PEOPLE = [
-  'name', 'gender', 'eyeColor', 'birthYear',
-  {
-    id:'filmConnection.pageInfo.hasNextPage',
-    label:'Has Next Page'
-  }
-]
+import SwapiLocal from './pages/SwapiLocal'
+import SwapiOnline from './pages/SwapiOnline/SwapiOnline'
+import { Link } from 'react-router-dom'
 
 class App extends Component {
-
-  state = {
-    query: ``,
-    input: '',
-    columns: [],
-    first: 3,
-  }
-
-  renderTables = (query, columns = []) => {
-    this.setState({
-      query: query,
-      columns: columns,
-    })
-  }
 
   render() {
     return (
@@ -84,33 +22,13 @@ class App extends Component {
           >
             Learn React
           </a>
-          <h2>TableQL Demo App</h2>
+          <h3>TableQL Demo App</h3>
         </header>
-        <button onClick={ () => {this.renderTables(GET_ALL_PEOPLE, COLUMNS_PEOPLE)} }>Get All People</button>||
-        <button onClick={ () => {this.renderTables(GET_ALL_FILMS, COLUMNS)} }>Get First {this.state.first} Films</button>||
-        <button onClick={ () => {this.renderTables(GET_ALL_FILMS, COLUMNS_ORDER)} }>Get First {this.state.first} Films v2</button>
-        <br/>
-        <label>
-          First Number of Films:
-          <input value={this.state.first} onChange={ (e) => this.setState({ first: e.target.value }) }/>
-        </label>
+        <Link to="/tableql">SWAPI Online</Link>
+        <Link to="/local">SWAPI Local</Link>
 
-        { this.state.query && <TableQL
-          query={this.state.query}
-          variables={{ first: this.state.first || 0 }}
-
-          debug={false}
-          // errorMessage='Custome Error!'
-          columns={this.state.columns}
-
-          tableql=''
-          thead='blue-header'
-          theadtr=''
-          theadth=''
-          tbody=''
-          tbodytr=''
-          tbodytd=''
-        />}
+        <Route path="/tableql" component={SwapiOnline} />
+        <Route path="/local" component={SwapiLocal} />
       </div>
     );
   }
