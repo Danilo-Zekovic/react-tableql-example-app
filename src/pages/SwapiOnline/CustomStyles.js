@@ -1,5 +1,5 @@
 import React from 'react'
-import TableQL from 'react-tableql'
+import { ApolloTableQL } from 'react-tableql'
 
 import { GET_ALL_FILMS } from '../../queries/SwapiOnlineQueries'
 
@@ -16,7 +16,7 @@ const styles = {
 const CustomStyles = () => (
   <>
     <h4>Custom Styles</h4>
-    <TableQL query={GET_ALL_FILMS} styles={styles} />>
+    <ApolloTableQL query={GET_ALL_FILMS} styles={styles} />>
   </>
 )
 

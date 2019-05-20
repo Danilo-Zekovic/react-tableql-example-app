@@ -24,7 +24,7 @@ class App extends Component {
           </a>
           <h3>TableQL Demo App</h3>
         </header>
-        <Link to="/tableql">SWAPI Online</Link>
+        <Link to="/tableql">SWAPI Online ApolloTabelQL</Link>
         <Link to="/local">SWAPI Local</Link>
 
         <Route path="/tableql" component={SwapiOnline} />

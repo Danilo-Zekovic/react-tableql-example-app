@@ -10,7 +10,7 @@ import OnRowCLick from './OnRowClick'
 
 const SwapiOnline = () => (
   <>
-    <h1><a href="https://graphiql.graphcms.com/simple/v1/swapi" target="blank">SWAPI Online</a></h1>
+    <h1><a href="https://graphiql.graphcms.com/simple/v1/swapi" target="blank">SWAPI Online ApolloTableQL</a></h1>
 
     <Link to="/tableql/basic">Basic/Default</Link>
     <Link to="/tableql/default-pagination">Default Pagination</Link>

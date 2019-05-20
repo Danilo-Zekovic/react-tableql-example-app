@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import TableQL from 'react-tableql'
+import { ApolloTableQL } from 'react-tableql'
 
 import {
   GET_ALL_FILMS,
@@ -34,7 +34,7 @@ const SwapiLocal = () => {
         <input value={first} onChange={ (e) => setFirst(e.target.value) }/>
       </label>
 
-      { query && <TableQL
+      { query && <ApolloTableQL
         query={query}
         variables={{ first: first || 0 }}
 
