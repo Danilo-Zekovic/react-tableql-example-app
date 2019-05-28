@@ -16,7 +16,7 @@ const styles = {
 const CustomStyles = () => (
   <>
     <h4>Custom Styles</h4>
-    <ApolloTableQL query={GET_ALL_FILMS} styles={styles} />>
+    <ApolloTableQL query={GET_ALL_FILMS} styles={styles} />
   </>
 )
 
