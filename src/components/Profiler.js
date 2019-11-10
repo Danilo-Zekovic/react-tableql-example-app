@@ -1,8 +1,8 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 
 const Profiler = ({children, component}) => {
 
-  const [metrics, setMetrics] = useState({compName:'', mode:'', actualTime:0, baseTime:0})
+  const [metrics, setMetrics] = useState({ compName:'', mode:'', actualTime:0, baseTime:0 })
 
   const getMetrics = (compName, mode, actualTime, baseTime) => {
     let data = {
@@ -18,7 +18,7 @@ const Profiler = ({children, component}) => {
   }
 
   return (
-    <React.unstable_Profiler id={component} onRender={getMetrics}>
+    <React.Profiler id={component} onRender={getMetrics}>
       <ul style={{textAlign:'left'}}>
         <li>Component: {metrics.compName}</li>
         <li>Mode: {metrics.mode}</li>
@@ -26,7 +26,7 @@ const Profiler = ({children, component}) => {
         <li>Base Time: {metrics.baseTime}</li>
       </ul>
       {children}
-    </React.unstable_Profiler>
+    </React.Profiler>
   )
 }
 
