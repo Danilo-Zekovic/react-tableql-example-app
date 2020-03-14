@@ -10,8 +10,9 @@ import { BrowserRouter } from "react-router-dom";
 // needed to connect to GraphQl endpoint
 // and for the TableQL to work
 const client = new ApolloClient({
-  // uri: "http://localhost:56423" // use this for testing SWAPI local
-  uri: "https://api.graphcms.com/simple/v1/swapi"
+  // uri: "http://localhost:37850" // use this for testing SWAPI local
+  // uri: "https://api.graphcms.com/simple/v1/swapi"
+  uri: "https://swapi.graph.cool"
 });
 
 ReactDOM.render(
