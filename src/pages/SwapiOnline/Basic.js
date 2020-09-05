@@ -1,5 +1,5 @@
 import React from 'react'
-import {ApolloTableQL} from 'react-tableql'
+import { ApolloTableQL } from 'react-tableql'
 
 import { GET_ALL_FILMS } from '../../queries/SwapiOnlineQueries'
 import Profiler from '../../components/Profiler'

@@ -3,8 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import ApolloClient from "apollo-boost";
-import { ApolloProvider } from 'react-apollo'
+import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client'
 import { BrowserRouter } from "react-router-dom";
 
 // needed to connect to GraphQl endpoint
@@ -12,7 +11,8 @@ import { BrowserRouter } from "react-router-dom";
 const client = new ApolloClient({
   // uri: "http://localhost:37850" // use this for testing SWAPI local
   // uri: "https://api.graphcms.com/simple/v1/swapi"
-  uri: "https://swapi.graph.cool"
+  uri: "https://swapi.graph.cool",
+  cache: new InMemoryCache()
 });
 
 ReactDOM.render(
